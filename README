@@ -1,0 +1,29 @@
+OpenU IL Extended Forum Layout
+-----------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------
+Description
+----------------------------------------------------
+
+Enclosed is an extended module for the Moodle forum activity (see screenshot).
+
+
+----------------------------------------------------
+Installation Information
+----------------------------------------------------
+
+1. Copy file in "lib" directory to moodle/lib.
+2. Copy "mod" directory to moodle/mod.
+3. Copy "pix" directory to the pix directory in your currently applied theme directory (moodle/theme/{currenttheme}/pix)
+
+
+----------------------------------------------------
+Notes
+----------------------------------------------------
+
+It is advisable to have the OpenU IL theme installed so that the layout will work properly. If you have it installed
+you will not need to do step 3 above.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Developed by: The Open University of Israel	Packaged by: http://www.atarplpl.co.il		Licence: GNU-GPL
