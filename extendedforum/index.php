@@ -397,12 +397,12 @@
 
     if ($generalextendedforums) {
         print_heading(get_string('generalextendedforums', 'extendedforum'));
-        print_ouil_table($generaltable);
+        extendedforum_print_ouil_table($generaltable);
     }
 
     if ($learningextendedforums) {
         print_heading(get_string('learningextendedforums', 'extendedforum'));
-        print_ouil_table($learningtable);
+        extendedforum_print_ouil_table($learningtable);
     }
 
     print_footer($course);

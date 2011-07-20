@@ -1,7 +1,7 @@
 <?php  // $Id$
 
 require_once($CFG->libdir.'/filelib.php');
-require_once($CFG->libdir . '/openuweblib.php')   ;
+require_once($CFG->dirroot . '/mod/extendedforum/weblib_ext.php')   ;
 
 /// CONSTANTS ///////////////////////////////////////////////////////////
 
@@ -490,7 +490,7 @@ function extendedforum_cron() {
 
                  if($extendedforum->hideauthor)
                         {
-                         $userfrom->role = get_user_main_role($post->userid, $course->id) ;
+                         $userfrom->role = extendedforum_get_user_main_role($post->userid, $course->id) ;
                        
                          }
                 $postsubject = "$course->shortname: ".format_string($post->subject,true);
@@ -753,7 +753,7 @@ function extendedforum_cron() {
                         $userfrom->customheaders = array ("Precedence: Bulk");
                         if($extendedforum->hideauthor)
                         {
-                         $userform->role = get_user_main_role($post->userid, $course->id) ;
+                         $userform->role = extendedforum_get_user_main_role($post->userid, $course->id) ;
                          }
                         if ($userto->maildigest == 2) {
                             // Subjects only
@@ -3404,7 +3404,7 @@ function extendedforum_print_post($post, $discussion, $extendedforum, &$cm, $cou
    if($post->parent == 0 ){
     if(isset($discussion->on_top)  ){
         if($discussion->on_top == 1){
-            $img_ontop = '<img width="18" height="18"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/neiza.gif" alt = "'. get_string('lockmessage_alt', 'extendedforum') .  '" />';
+            $img_ontop = '<img width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/neiza.gif" alt = "'. get_string('lockmessage_alt', 'extendedforum') .  '" />';
         }
     }
    }
@@ -3631,7 +3631,7 @@ function extendedforum_print_post($post, $discussion, $extendedforum, &$cm, $cou
     
     //print course teacher icon if posted by course teacher
    
-     $img_teaching =  get_teacher_img($post->role, 'darkgray')  ;
+     $img_teaching =  extendedforum_get_teacher_img($post->role, 'darkgray')  ;
       echo     $img_teaching ;
     
     
@@ -3692,9 +3692,9 @@ function print_user_commands($discussion, $post, $enableajax, $can_update_flag, 
          }
          
         $sendmail = '<a href="forward.php?f=' .$post->extendedforum . '&amp;forward=' . $post->id . '&amp;page=' . $page . '">' . $strsend . '</a>';
-        $printimg = '<img border="0" width="16" height="16" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/print.gif" alt = "" title = "" />' ;
+        $printimg = '<img border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/print.gif" alt = "" title = "" />' ;
         $printmessage  = '<a href="javascript:printObject(\'postview.php?f='. $post->extendedforum. '&amp;view=' . $post->id . '&amp;discussion=' . $post->discussion . '&amp;print=1\')" >' . $printimg . '&nbsp;' .  $strprint . '</a> '; 
-        $separator = $CFG->themewww .'/'.current_theme(). '/pix/mod/extendedforum/blue-seperator.gif'  ;
+        $separator = $CFG->wwwroot . '/mod/extendedforum/pix/blue-seperator.gif'  ;
         $separator_img =   '<img border="0" width="9" height="9" src="' .  $separator. '" alt= "" title = ""/>&nbsp;'     ;
        
           if ($reply) {
@@ -3705,11 +3705,11 @@ function print_user_commands($discussion, $post, $enableajax, $can_update_flag, 
           
         
           echo  $printmessage; 
-          echo    '<img border="0" width="15" height="12" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/send.jpg"   alt = "" title = "" />&nbsp;' ;
+          echo    '<img border="0" width="15" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/send.jpg"   alt = "" title = "" />&nbsp;' ;
           echo $sendmail;
           if($can_update_flag && $enableajax) {
               $imgid  = 'imgflag'    . $post->id . '_box' ;
-              $flagmark = '<img border="0" width="13" height="16" src="'  .  $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/simun-small.gif" alt = "" title = "" />' ;
+              $flagmark = '<img border="0" width="13" height="16" src="'  .  $CFG->wwwroot . '/mod/extendedforum/pix/simun-small.gif" alt = "" title = "" />' ;
              if($post->postflag){
                 echo '&nbsp;<a id="aflag' . $post->id . '" href="javascript:void(change_flag('. $post->id . ','. $post->discussion . ',\'' . $imgid . '\','. $enableajax. '))">' . $flagmark . '&nbsp;' . $strmarkread . '</a>';
              }
@@ -3730,13 +3730,13 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
 {
   global $CFG;
   
-   $separator = $CFG->themewww .'/'.current_theme(). '/pix/mod/extendedforum/red-separator.gif'  ;
+   $separator = $CFG->wwwroot . '/mod/extendedforum/pix/red-separator.gif'  ;
    $separator_img =   '<img border="0" width="9" height="9" src="' .  $separator. '" alt= "" title = ""/>&nbsp;'     ;
         
   
  if(!$post->parent){  //lock message for top messages only
                 if($cm->cache->caps['mod/extendedforum:lockmessage']) {
-                $imageneiza = '<img border="0" width="18" height="18" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/neiza.gif" alt = "" title = "" /> ';
+                $imageneiza = '<img border="0" width="18" height="18" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/neiza.gif" alt = "" title = "" /> ';
                      if ($discussion->on_top==1) {
                         echo  '<a href="'   . $CFG->wwwroot . '/mod/extendedforum/post.php?on_top=-1&amp;discussionid=' .$post->discussion . '&amp;extendedforumid='. $extendedforum->id .'">' . $imageneiza  . '&nbsp;' . $strunlock.'</a>&nbsp;';
                     }
@@ -3755,7 +3755,7 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
      {
        if($cm->cache->caps['mod/extendedforum:markmessage'])
        {
-         $recommanding = '<img border="0" width="13" height="13" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/hamlaza_brightback.gif" alt = "" title = "" />';
+         $recommanding = '<img border="0" width="13" height="13" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/hamlaza_brightback.gif" alt = "" title = "" />';
          if($post->mark == 1)
          {
            echo  '&nbsp;'  . $recommanding .'&nbsp;<a href="javascript:void(recommend('. $post->id .',1,'. $post->discussion . '))" id ="anchor_recommend_' . $post->id . '">'.   $strremoverecommad.'</a>&nbsp;';
@@ -3775,13 +3775,13 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
      else
      {
        if($cm->cache->caps['mod/extendedforum:movemessage']) {
-       $movemessageimg =  '&nbsp;<img border="0" width="13" height="12" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/haavara.gif" alt = "" title = "" />'; 
+       $movemessageimg =  '&nbsp;<img border="0" width="13" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/haavara.gif" alt = "" title = "" />'; 
        echo $movemessageimg . '&nbsp;<a href = "'.$CFG->wwwroot .'/mod/extendedforum/movemessage.php?p='. $post->id . '&amp;f=' . $post->extendedforum. '">' . $strmovemessage . '</a>'  ;
        }
        
         //delete message  
      if( $cm->cache->caps['mod/extendedforum:deleteanypost']) {
-        $deleteimg =  '&nbsp;<img border="0" width="13" height="14" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/delete.gif" alt = "" title = "" />'; 
+        $deleteimg =  '&nbsp;<img border="0" width="13" height="14" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/delete.gif" alt = "" title = "" />'; 
         echo   $deleteimg. '&nbsp;<a href="'.$CFG->wwwroot.'/mod/extendedforum/post.php?delete='.$post->id.'">'.$strdelete.'</a>';
      } 
      
@@ -3802,7 +3802,7 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
  
     global $CFG;
      
-     $discussionflag = '<img width="13" height="13"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/hamlaza.gif" '.
+     $discussionflag = '<img width="13" height="13"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/hamlaza.gif" '.
          ' alt = "'. get_string('recommend_alt', 'extendedforum') .  '" />';
          
          
@@ -3817,7 +3817,7 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
  {
       global $CFG;
      
-     $discussionflag = '<img width="17" height="20"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/simun.gif" '.
+     $discussionflag = '<img width="17" height="20"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/simun.gif" '.
          ' alt = "'. get_string('flagon', 'extendedforum') .  '" />';
         
         //onClick="remove_discussion_flag(' . $discussionid . ', \'flag_post' . $discussionid . '\', \'flag'. $discussionid . '\','. $enableajax . ' )"/>';
@@ -3845,7 +3845,7 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
           $spanid  =     $spanid . "box"  ;
           $imageid =    $imageid . "box"   ;
         }
-       $recommended = '<span id="'. $spanid . $post->id. '" class="'. $class . '"><img src = "'. $CFG->themewww .'/'.current_theme(). '/pix/mod/extendedforum/hamlaza.gif" alt = "' . $alt . '" id = "' . $imageid . $post->id . '" border="" width="13" height="13" /></span>' ;
+       $recommended = '<span id="'. $spanid . $post->id. '" class="'. $class . '"><img src = "'. $CFG->wwwroot . '/mod/extendedforum/pix/hamlaza.gif" alt = "' . $alt . '" id = "' . $imageid . $post->id . '" border="" width="13" height="13" /></span>' ;
        
        return  $recommended;
   
@@ -3873,11 +3873,11 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
        }
     
         
-      $flag_option =  '<span id = "' . $spanid  . '" class = "' . $class . '"> <img width="17" height="20" src="'. $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/simun.gif" border="0" id = "' .  $imgid . '" /></span>' ; 
+      $flag_option =  '<span id = "' . $spanid  . '" class = "' . $class . '"> <img width="17" height="20" src="'. $CFG->wwwroot . '/mod/extendedforum/pix/simun.gif" border="0" id = "' .  $imgid . '" /></span>' ; 
                     
                  /*   '<img  onClick="change_flag('. $post->id . ','. $post->discussion . ',\'' . $imgid . '\','. $enableajax . ')" class="imageaction flag_post' . $post->discussion . '" id = "' .  $imgid . '"  title="' . get_string(
                         $post->postflag ? 'markread' : 'setflag', 'extendedforum') . 
-                    '" src="' . $CFG->themewww .'/'.current_theme().'/pix/mod/extendedforum/flag_' . 
+                    '" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/flag_' . 
                         ($post->postflag ? 'on' : 'off') . '.png" alt="' . 
                         get_string($post->postflag ? 'flagon' : 'flagoff', 
                             'extendedforum') . 
@@ -3918,7 +3918,7 @@ function  print_post_admin_commands($extendedforum, $post, $cm, $discussion , $e
      else
     {
      
-       $by->name =get_user_main_role($post->userid, $extendedforum->course) ;
+       $by->name =extendedforum_get_user_main_role($post->userid, $extendedforum->course) ;
     }
      $by->date = userdate($post->modified);
 
@@ -3971,7 +3971,7 @@ function extendedforum_print_discussion_header(&$post, $extendedforum, $group=-1
              if( $post->unread > 0 )
              {
               
-              $img_new = '<img width="18" height="18"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/new.jpg" alt = "' . $strnewmessage . '">' ;
+              $img_new = '<img width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/new.jpg" alt = "' . $strnewmessage . '">' ;
               
              }
         
@@ -4066,12 +4066,12 @@ function extendedforum_print_discussion_header(&$post, $extendedforum, $group=-1
     //action button (open and close thread)
       
 
-    $actionimage = $CFG->themewww .'/'.current_theme(). '/pix/mod/extendedforum/plus.gif';
+    $actionimage = $CFG->wwwroot . '/mod/extendedforum/pix/plus.gif';
     $imagealt = get_string('opendiscussionthread', 'extendedforum');
     
     if( $mode == EXTENDEDFORUM_MODE_ALL)
     {
-          $actionimage = $CFG->themewww .'/'.current_theme(). '/pix/mod/extendedforum/minus.gif'  ;
+          $actionimage = $CFG->wwwroot . '/mod/extendedforum/pix/minus.gif'  ;
           $imagealt = get_string('closediscussionthread', 'extendedforum');
     }
     $img_ontop = '';
@@ -4080,7 +4080,7 @@ function extendedforum_print_discussion_header(&$post, $extendedforum, $group=-1
     {
         if($post->on_top == 1)
         {
-            $img_ontop = '<img width="19" height="18"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/neiza_back.png" '.
+            $img_ontop = '<img width="19" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/neiza_back.png" '.
          ' alt = "'. get_string('lockmessage_alt', 'extendedforum') .  '" />';
         
         }
@@ -4089,7 +4089,7 @@ function extendedforum_print_discussion_header(&$post, $extendedforum, $group=-1
     //print course teacher icon if posted by course teacher
    
   
-     $img_teacher = get_teacher_img($post->role, 'gray');
+     $img_teacher = extendedforum_get_teacher_img($post->role, 'gray');
             
     echo '<td class="actionbutton openutable '. $readunread_class . '"><a href="javascript:void(openCloseThread('. $post->id . ',\'discussion' . $post->id . '\',\'image' . $post->id . '\','. $post->discussion . ',\'flag_post' . $post->discussion . '\'))"><img src="'.  $actionimage . '" id = "image' . $post->id .  '" title = "'. $imagealt . '" alt = "' . $imagealt . '"/></a>';
    // echo '<a name="discussion'. $post->discussion .'" ></a>';
@@ -4117,7 +4117,7 @@ function extendedforum_print_discussion_header(&$post, $extendedforum, $group=-1
      {
      
      
-     $role = get_user_main_role($post->userid, $extendedforum->course) ;
+     $role = extendedforum_get_user_main_role($post->userid, $extendedforum->course) ;
      echo '<td class="author openutable ' . $readunread_class .'">';
        echo "$role" ;
       echo '</td>';
@@ -5815,7 +5815,7 @@ function extendedforum_print_latest_discussions($course, $extendedforum, $maxdis
         ///Show the paging bar
       //  echo '<div class="paging">';
         echo '<table class="pagebar"><tr>' ;
-        print_formated_page_bar($numdiscussions, $page, $perpage, "view.php?f=$extendedforum->id&amp;");
+        extendedforum_print_formated_page_bar($numdiscussions, $page, $perpage, "view.php?f=$extendedforum->id&amp;");
        
      
         if ($numdiscussions > 1000) {
@@ -5996,7 +5996,7 @@ function extendedforum_print_latest_discussions($course, $extendedforum, $maxdis
         ///Show the paging bar
       //  echo '<div class="paging">';
         echo '<table class="pagebar secondpagebar"><tr>' ;
-        print_formated_page_bar($numdiscussions, $page, $perpage, "view.php?f=$extendedforum->id&amp;");
+        extendedforum_print_formated_page_bar($numdiscussions, $page, $perpage, "view.php?f=$extendedforum->id&amp;");
             echo '</tr></table>'  ; //end paging bar table 
        echo '</td>' ;   
        print_new_message_button($extendedforum, $currentgroup, $groupmode, $cm, $context );
@@ -6443,7 +6443,7 @@ function extendedforum_print_posts_threaded($course, &$cm, $extendedforum, $disc
                 if($extendedforumtracked) {
                    $postread = !empty($post->postread);
 				   if(!$postread)  {
-						 $img_new = '<img width="18" height="18"  src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/extendedforum/new_white.jpg" alt = "' . $strnewmessage . '">' ;
+						 $img_new = '<img width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/new_white.jpg" alt = "' . $strnewmessage . '">' ;
 					}
 				   echo ($img_new)  ;
                  
@@ -6476,7 +6476,7 @@ function extendedforum_print_posts_threaded($course, &$cm, $extendedforum, $disc
                 
                 //print course teacher icon if posted by course teacher
                 
-                $img_teacher = get_teacher_img($post->role, 'white');
+                $img_teacher = extendedforum_get_teacher_img($post->role, 'white');
                 echo $img_teacher;
                 echo  '</span> </div>'; //end divpostsubject
                				
@@ -7821,7 +7821,7 @@ function extendedforum_tp_can_track_extendedforums($extendedforum=false, $user=f
 
     if ($extendedforum === false) {
         // general abitily to track extendedforums
-        return (bool)$user->trackextendedforums;
+        return (bool)$user->trackforums;
     }
     
 
@@ -7835,7 +7835,7 @@ function extendedforum_tp_can_track_extendedforums($extendedforum=false, $user=f
     $extendedforumforced = ($extendedforum->trackingtype == EXTENDEDFORUM_TRACKING_ON);
     
   
-    return ($extendedforumforced || $extendedforumallows)  && !empty($user->trackextendedforums);
+    return ($extendedforumforced || $extendedforumallows)  && !empty($user->trackforums);
 }
 
 /**

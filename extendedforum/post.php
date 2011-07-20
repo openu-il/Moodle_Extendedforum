@@ -143,7 +143,7 @@ if (!empty($extendedforum)) {      // User is starting a new discussion in a ext
 	}
 	if($extendedforum->hideauthor)
 	{
-		$parent->role = get_user_main_role($parent->userid, $discussion->course)      ;
+		$parent->role = extendedforum_get_user_main_role($parent->userid, $discussion->course)      ;
 	}
 	if (! $course = get_record("course", "id", $discussion->course)) {
 		error("The course number was incorrect ($discussion->course)");
@@ -242,7 +242,7 @@ if (!empty($extendedforum)) {      // User is starting a new discussion in a ext
 	if($extendedforum->hideauthor)
 	{
 	  
-		$parent->role = get_user_main_role($post->userid, $discussion->course)      ;
+		$parent->role = extendedforum_get_user_main_role($post->userid, $discussion->course)      ;
 	}
 
 	// Load up the $post variable.
@@ -269,7 +269,7 @@ if (!empty($extendedforum)) {      // User is starting a new discussion in a ext
 	}
 	if($extendedforum->hideauthor)
 	{
-		$post->role =get_user_main_role($post->userid, $discussion->course)      ;
+		$post->role =extendedforum_get_user_main_role($post->userid, $discussion->course)      ;
 	}
 	if (!$cm = get_coursemodule_from_instance("extendedforum", $extendedforum->id, $extendedforum->course)) {
 		error('Could not get the course module for the extendedforum instance.');
@@ -459,7 +459,7 @@ error('Discussions from this extendedforum cannot be split');
 
 if($extendedforum->hideauthor)
 {
-$post->role = get_user_main_role($post->userid, $discussion->course)      ;
+$post->role = extendedforum_get_user_main_role($post->userid, $discussion->course)      ;
 }
 
 if (!$post->parent) {

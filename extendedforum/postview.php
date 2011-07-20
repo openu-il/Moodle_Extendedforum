@@ -79,7 +79,7 @@
     $print_text = get_string('print', 'extendedforum');
       
       $printgif = '/extendedforum/print.gif';
-      $printimage = '<img src="' . $CFG->themewww .'/'.current_theme(). '/pix/mod' .  $printgif . '" class="printimage"  border="0" alt="'.  $print_text . '" title = "' . $print_text. '" width="16"  height="16">' ;
+      $printimage = '<img src="' . $CFG->wwwroot . '/mod/extendedforum/pix/print.gif'" class="printimage"  border="0" alt="'.  $print_text . '" title = "' . $print_text. '" width="16"  height="16">' ;
     
      $post_message = get_textonly_postmessage($post, $course, $extendedforum, $userfrom, $cm, true, true) ; 
       echo '<div class="printimage"><a href="javascript:print();">'. $printimage .'&nbsp;' .  $print_text . '</a></div>';

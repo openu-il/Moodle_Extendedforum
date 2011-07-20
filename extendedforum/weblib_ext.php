@@ -16,7 +16,7 @@ define ("SHOHAM", 42)    ;
  * @param bool $return whether to return an output string or echo now
  * @return bool or string
  */
-function print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pagevar='page',$nocurr=false, $return=false) {
+function extendedforum_print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pagevar='page',$nocurr=false, $return=false) {
    $maxdisplay = 7;
     $output = '';
     $left_span = 'last_paging_span' ;
@@ -111,7 +111,7 @@ function print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pageva
     *
     */
                
-   function get_teacher_img($role, $background = 'white')
+   function extendedforum_get_teacher_img($role, $background = 'white')
    {
      global $CFG ;
      
@@ -121,32 +121,28 @@ function print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pageva
        $text = get_string('merakez_published', 'forum')   ;
        $ext='.png'; //Shimon #1823
        $src = 'merakez_'  . $background  .$ext     ;
-       if (!file_exists($CFG->themewww  .'/'.current_theme(). '/pix/mod/forum/' . $src)) {
+       if (!file_exists($CFG->wwwroot . '/mod/extendedforum/pix/' . $src)) {
        	  $ext='.jpg';
        }
 
-       $img =    '&nbsp;<img border="0" width="21" height="12" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/forum/' . $src . '" alt = "'. $text . '" />' ;
+       $img =    '&nbsp;<img border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/' . $src . '" alt = "'. $text . '" />' ;
          
       }else if( $role == TEACHER ) {  
          $text = get_string('manche_published', 'forum')    ;
          $ext='.png'; //Shimon #1823
          $src =   'manche_'  . $background  . $ext      ;
-         if (!file_exists($CFG->themewww  .'/'.current_theme(). '/pix/mod/forum/' . $src)) {
+         if (!file_exists($CFG->wwwroot . '/mod/extendedforum/pix/' . $src)) {
        	  $ext='.jpg';
          }
 
-         $img =    '&nbsp;<img border="0" width="21" height="12" src="' . $CFG->themewww  .'/'.current_theme(). '/pix/mod/forum/' . $src . '" alt = "'. $text . '" />' ;
+         $img =    '&nbsp;<img border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/' . $src . '" alt = "'. $text . '" />' ;
       }
    
     
      return $img;
    }
-   
-  
-   
 
-   
-   /**
+/**
  * Print a nicely formatted table.
  *
  * @param array $table is an object with several properties.
@@ -169,7 +165,7 @@ function print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pageva
  * @return boolean or $string
  * @todo Finish documenting this function
  */
-   function print_ouil_table ($table, $return=false){
+   function extendedforum_print_ouil_table ($table, $return=false){
    
      $output = '';
 
@@ -304,27 +300,6 @@ function print_formated_page_bar($totalcount, $page, $perpage, $baseurl, $pageva
     return true;
    }
 
-
-/*
-function   is_openuadmin;
-author:yifatsh 1/2011
-	the fuction check if user is has capabilites od admin or in shoham role by system or by course 
-
-*/
-function   is_openuadmin (){
-	global $USER ,$COURSE;
-	 $context_site = get_context_instance(CONTEXT_SYSTEM );
- 	 $context_course = get_context_instance(CONTEXT_COURSE, $COURSE->id);
-
-	$rs=false;
-	if((is_siteadmin($USER->id)===true) ||
-			(user_has_role_assignment($USER->id, SHOHAM , $context_site->id))   ||
-			(user_has_role_assignment($USER->id, SHOHAM , $context_course->id)) )	{
-		$rs=true;
-	}
-	return	$rs;
-}
-
 /**
  *  @param int userid
  *  @param int courseid
@@ -332,7 +307,7 @@ function   is_openuadmin (){
  *  return the most important role of a user in a course
  *
  **/
- function get_user_main_role($userid, $courseid)
+ function extendedforum_get_user_main_role($userid, $courseid)
  {
  global $CFG;
  $sql = "SELECT r.name AS role
