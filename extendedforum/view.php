@@ -301,17 +301,17 @@
 
             break;
     }
-    echo '<div class="extendedforumicons" dir="' . get_string('thisdirection').  '">
-     <img class="iconmap" width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/new_white.jpg" alt = "' .get_string('newmessage_icons', 'extendedforum'). '">' . get_string('newmessage_icons', 'extendedforum'). 
-      '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/addcomment_white.gif"   alt = "'. get_string('replay_icons' , 'extendedforum') . '" />' .get_string('replay_icons' , 'extendedforum')   .
-      '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/print.gif" alt = "'. get_string('print' , 'extendedforum') .  '"/>' .   get_string('print' , 'extendedforum') .
-        '<img  class="iconmap" border="0" width="15" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/send.jpg"   alt = "'. get_string('sendbymail' , 'extendedforum') . '"  />' .   get_string('sendbymail' , 'extendedforum')  .
-      '<img class="iconmap" border="0" width="13" height="16" src="'  .  $CFG->wwwroot . '/mod/extendedforum/pix/simun-small.gif" alt = "'. get_string('personalflag', 'extendedforum') . '" />'   . get_string('personalflag', 'extendedforum')  .
-      '<img class="iconmap" border="0" width="18" height="18" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/neiza.gif" alt = "'. get_string('pinnedmessage_icons', 'extendedforum'). '" /> ' .get_string('pinnedmessage_icons', 'extendedforum'). 
-        '<img class="iconmap" border="0" width="13" height="13"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/hamlaza.gif" alt="' . get_string('teacher_recomend_icon', 'extendedforum') .'">' . get_string('teacher_recomend_icon', 'extendedforum')   .
-     '<img class="iconmap" border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/merakez_white.png" alt = "'. get_string('coursecoordinator', 'extendedforum') . '" />' . get_string('coursecoordinator', 'extendedforum') .
-    '<img class="iconmap" border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/manche_white.jpg" alt = "'. get_string('tutor', 'extendedforum')  . '"/>' . get_string('tutor', 'extendedforum') .
-   '<br>' ;
+    echo '<div class="extendedforumicons" dir="' . get_string('thisdirection').  '">';
+    echo '<img class="iconmap" width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/new_white.jpg" alt = "' .get_string('newmessage_icons', 'extendedforum'). '">' . get_string('newmessage_icons', 'extendedforum');
+    echo '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/addcomment_white.gif"   alt = "'. get_string('replay_icons' , 'extendedforum') . '" />' .get_string('replay_icons' , 'extendedforum');
+    echo '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/print.gif" alt = "'. get_string('print' , 'extendedforum') .  '"/>' .   get_string('print' , 'extendedforum');
+    echo '<img  class="iconmap" border="0" width="15" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/send.jpg"   alt = "'. get_string('sendbymail' , 'extendedforum') . '"  />' .   get_string('sendbymail' , 'extendedforum');
+    echo '<img class="iconmap" border="0" width="13" height="16" src="'  .  $CFG->wwwroot . '/mod/extendedforum/pix/simun-small.gif" alt = "'. get_string('personalflag', 'extendedforum') . '" />'   . get_string('personalflag', 'extendedforum');
+    echo '<img class="iconmap" border="0" width="18" height="18" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/neiza.gif" alt = "'. get_string('pinnedmessage_icons', 'extendedforum'). '" /> ' .get_string('pinnedmessage_icons', 'extendedforum');
+    echo '<img class="iconmap" border="0" width="13" height="13"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/hamlaza.gif" alt="' . get_string('teacher_recomend_icon', 'extendedforum') .'">' . get_string('teacher_recomend_icon', 'extendedforum');
+//    echo '<img class="iconmap" border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/merakez_white.png" alt = "'. get_string('coursecoordinator', 'extendedforum') . '" />' . get_string('coursecoordinator', 'extendedforum');
+//    echo '<img class="iconmap" border="0" width="21" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/manche_white.jpg" alt = "'. get_string('tutor', 'extendedforum')  . '"/>' . get_string('tutor', 'extendedforum');
+    echo '<br>';
     if(!empty($cm->cache->caps['mod/extendedforum:movemessage'])){
       echo '<span class="extendedforummap">' . get_string('extendedforummanagers', 'extendedforum' ) . ':</span>' .
       '<img class="iconmap" border="0" width="13" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/haavara_white.gif" alt = "'. get_string('movemessage', 'extendedforum') .'" />' .get_string('movemessage', 'extendedforum')  .
