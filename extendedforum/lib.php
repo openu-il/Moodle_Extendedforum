@@ -3490,7 +3490,7 @@ function extendedforum_print_post($post, $discussion, $extendedforum, &$cm, $cou
      $subject =   $post->subject  ;
     
       $by = new object();
-       $by->date = userdate($post->modified, get_string('strftimedaydatetimemodified'));
+       $by->date = userdate($post->modified, get_string('strftimedaydatetimemodified', 'extendedforum'));
    
       // Actual content
    
@@ -5895,7 +5895,7 @@ function extendedforum_print_latest_discussions($course, $extendedforum, $maxdis
      }          
     $canviewparticipants = has_capability('moodle/course:viewparticipants',$context);
     $canupdateflag = has_capability('mod/extendedforum:updateflag', $context)  ;
-    $strdatestring =  get_string('strftimedaydatetimemodified') ; //get_string('strftimerecentfull');
+    $strdatestring =  get_string('strftimedaydatetimemodified', 'extendedforum') ; //get_string('strftimerecentfull');
     
 
     // Check if the extendedforum is tracked.

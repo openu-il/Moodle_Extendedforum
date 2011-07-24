@@ -327,6 +327,7 @@ $string['shortpost'] = 'Short post';
 $string['showsubscribers'] = 'Show/edit current subscribers';
 $string['singleextendedforum'] = 'A single simple discussion';
 $string['startedby'] = 'Started by';
+$string['strftimedaydatetimemodified'] =  '%%H:%%M  %%d.%%m.%%Y ';
 $string['subject'] = 'Subject';
 $string['subscribe'] = 'Subscribe to this extendedforum';
 $string['subscribeall'] = 'Subscribe everyone to this extendedforum';

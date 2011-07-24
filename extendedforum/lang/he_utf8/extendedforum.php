@@ -330,6 +330,7 @@ $string['shortpost'] = 'פרסום הודעה קצר';
 $string['showsubscribers'] = 'הצג/ערוך מנויים קיימים';
 $string['singleextendedforum'] = 'דיון פשוט אחד';
 $string['startedby'] = 'נפתח על ידי';
+$string['strftimedaydatetimemodified'] =  '%%H:%%M  %%d.%%m.%%Y ';
 $string['subject'] = 'נושא';
 $string['subscribe'] = 'הרשם לפורום זה';
 $string['subscribeall'] = 'רשום את כולם כמנויים לפורום זה';
