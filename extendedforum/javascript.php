@@ -421,7 +421,7 @@ function  change_flag_ajax(post_id, discussion_id , image_element_id)
    //the link to the command
     href_flag_element = document.getElementById('aflag' + post_id) ;
     
-    href_flag_element_img = '<img boder="0" width="13" height="16"  src="'  +  thewwwroot +  "/mod/extendedforum/pix/simun-small.gif"  alt = "" title = ""   />';
+    href_flag_element_img = '<img boder="0" width="13" height="16"  src="'  +  thewwwroot +  '/mod/extendedforum/pix/simun-small.gif"  alt = "" title = ""   />';
     
     //span where we have the image in the post message
      span_element_box =   document.getElementById('spanflag' + post_id  + '_box') ;
@@ -488,7 +488,7 @@ function  change_flag_ajax(post_id, discussion_id , image_element_id)
         //add the flag image
          
           flagelement.innerHTML =
-           '<img  src="' + thewwwroot +  "/mod/extendedforum/pix/simun.gif"   alt = "' + global_alt_flag_on +  '" />';
+           '<img  src="' + thewwwroot +  '/mod/extendedforum/pix/simun.gif"   alt = "' + global_alt_flag_on +  '" />';
                      
                           // '" onClick="remove_discussion_flag(' + discussion_id +  ', \'flag_post' + discussion_id +  '\', \'flag' + discussion_id +  '\', 1 )">';
       }
@@ -592,7 +592,7 @@ function change_flag(post_id, discussion_id , image_element_id, withajax)
         //add the flag image
          
           recommandelement.innerHTML =
-           '<img  src="' + thewwwroot +  "/mod/extendedforum/pix/hamlaza.gif"   alt = "' + global_mark_on +  '" />';
+           '<img  src="' + thewwwroot +  '/mod/extendedforum/pix/hamlaza.gif"   alt = "' + global_mark_on +  '" />';
                      
        }                  
        
