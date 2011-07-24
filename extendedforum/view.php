@@ -301,7 +301,11 @@
 
             break;
     }
+    echo '<br>';
+    echo '<br>';
     echo '<div class="extendedforumicons" dir="' . get_string('thisdirection').  '">';
+    echo '<span class="extendedforummap">'.get_string('iconlegend', 'extendedforum').':</span>';
+    echo '<br>';
     echo '<img class="iconmap" width="18" height="18"  src="' . $CFG->wwwroot . '/mod/extendedforum/pix/new_white.jpg" alt = "' .get_string('newmessage_icons', 'extendedforum'). '">' . get_string('newmessage_icons', 'extendedforum');
     echo '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/addcomment_white.gif"   alt = "'. get_string('replay_icons' , 'extendedforum') . '" />' .get_string('replay_icons' , 'extendedforum');
     echo '<img class="iconmap" border="0" width="16" height="16" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/print.gif" alt = "'. get_string('print' , 'extendedforum') .  '"/>' .   get_string('print' , 'extendedforum');
@@ -317,7 +321,7 @@
       '<img class="iconmap" border="0" width="13" height="12" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/haavara_white.gif" alt = "'. get_string('movemessage', 'extendedforum') .'" />' .get_string('movemessage', 'extendedforum')  .
       '<img class="iconmap" border="0" width="11" height="11" src="' . $CFG->wwwroot . '/mod/extendedforum/pix/delete_white.gif" alt = "' .get_string('delete', 'extendedforum') . '">' . get_string('delete', 'extendedforum') ;
     }
-     echo '</div>'       ;
+     echo '</div>';
     print_footer($course);
 
 ?>

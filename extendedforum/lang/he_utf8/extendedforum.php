@@ -152,6 +152,7 @@ $string['generalextendedforum'] = 'פורום רגיל לשימוש כללי';
 $string['generalextendedforums'] = 'פורומים כלליים';
 $string['hideauthor']   = 'הסתר שם מחבר/ת ההודעה: ';
 $string['hideauthorcomment'] = '<b>הסתרה זו הפיכה בכל עת - </b> הפורום איננו אנונימי !';
+$string['iconlegend'] = 'מקרא צלמיות';
 $string['inextendedforum'] = 'ב-$a';
 $string['intronews'] = 'חדשות כלליות והודעות';
 $string['introsocial'] = 'פורום פתוח, לניהול דיונים על כל דבר שתרצה.';

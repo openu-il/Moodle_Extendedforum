@@ -151,6 +151,7 @@ $string['generalextendedforum'] = 'Standard extendedforum for general use';
 $string['generalextendedforums'] = 'General extendedforums';
 $string['hideauthor']  = 'Hide author name: ';
 $string['hideauthorcomment'] = '<b>The extendedforum is not anonymous, hiding can be cancelled</b>';
+$string['iconlegend'] = 'Icon Legend';
 $string['inextendedforum'] = 'in $a';
 $string['intronews'] = 'General news and announcements';
 $string['introsocial'] = 'An open extendedforum for chatting about anything you want to';
