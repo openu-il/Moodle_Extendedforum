@@ -1,7 +1,10 @@
 <?php
- define("EDITING_TEACHER", 12);
-define ("TEACHER", 17)    ;
-define ("SHOHAM", 42)    ;
+if(!defined("EDITING_TEACHER"))
+     define("EDITING_TEACHER", 12);
+if(!defined("TEACHER"))
+    define ("TEACHER", 17)    ;
+if(!defined("SHOHAM"))
+    define ("SHOHAM", 42)    ;
 
 /**
  * Prints a single paging bar to provide access to other pages  (usually in a search)
