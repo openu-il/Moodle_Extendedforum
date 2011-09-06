@@ -3431,7 +3431,7 @@ function extendedforum_print_post($post, $discussion, $extendedforum, &$cm, $cou
 		$prindent="style=\"margin-left: $prindent".'px'.";\"" ; 
     }
     
-    echo "<div id= \"div$post->id\" class=\"message\" $rindent >" ;
+    echo "<div id= \"div$post->id\" class=\"extendedforummessage\" $rindent >" ;
     echo '<a id="p'.$post->id.'" name ="p' . $post->id . '"></a>';
     //lala $indent
     echo "<table cellspacing=\"0\" border=0 class=\"$oddOReven $class extendedforumpost\">";

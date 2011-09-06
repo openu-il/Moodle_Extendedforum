@@ -138,7 +138,7 @@ margin-left:10px;
 	max-width:700px;
  }
  
- div.message{
+ div.extendedforummessage{
    max-width:700px !important ;
    
    
